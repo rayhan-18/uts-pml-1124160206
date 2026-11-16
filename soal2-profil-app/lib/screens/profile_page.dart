@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../models/profile.dart';
 import '../widgets/info_tile.dart';
 import '../widgets/profile_header.dart';
+import '../screens/edit_profile_page.dart';
 
 class ProfilePage extends StatefulWidget {
   final bool isDarkMode;
@@ -18,7 +19,27 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  final _profile = Profile.initialData();
+  Profile _profile = Profile.initialData();
+
+  Future<void> _bukaEditProfil() async {
+    final Profile? dataBaru = await Navigator.push<Profile>(
+      context,
+      MaterialPageRoute(
+        builder: (context) => EditProfilePage(profile: _profile),
+      ),
+    );
+
+    if (dataBaru != null) {
+      setState(() {
+        _profile = dataBaru;
+      });
+
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Profil berhasil diperbarui')),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -70,6 +91,11 @@ class _ProfilePageState extends State<ProfilePage> {
             ],
           ),
         ),
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: _bukaEditProfil,
+        icon: const Icon(Icons.edit),
+        label: const Text('Edit Profil'),
       ),
     );
   }
