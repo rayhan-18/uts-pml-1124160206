@@ -3,7 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:soal2_profil_app/screens/login_page.dart';
 
 void main() {
-  testWidgets('Halaman login tampil dengan benar', (WidgetTester tester) async {
+  testWidgets('Tampilan Halaman Login', (WidgetTester tester) async {
     await tester.pumpWidget(
       const MaterialApp(
         home: LoginPage(),
