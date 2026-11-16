@@ -12,9 +12,7 @@
 
 ## Screenshot
 
-![Login](soal2-profil-app/assets/images/Loginn.jpg)
-
-![Profil](soal2-profil-app/assets/images/profile.jpg)
+![Login](soal2-profil-app/assets/images/Loginn.jpg)  
 
 ![Edit Profil](soal2-profil-app/assets/images/profilepage.jpg)
 
