@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import '../models/profile.dart';
+import '../widgets/info_tile.dart';
+import '../widgets/profile_header.dart';
 
 class ProfilePage extends StatefulWidget {
   final bool isDarkMode;
@@ -16,13 +18,10 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
- final Profile _profile = Profile.initialData();
+  final _profile = Profile.initialData();
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-    final colorScheme = Theme.of(context).colorScheme;
-
     return Scaffold(
       appBar: AppBar(
         title: const Text('Profil Mahasiswa'),
@@ -43,42 +42,7 @@ class _ProfilePageState extends State<ProfilePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              CircleAvatar(
-                radius: 56,
-                backgroundImage: AssetImage(_profile.fotoAsset),
-              ),
-              const SizedBox(height: 16),
-              Text(
-                _profile.nama,
-                style: textTheme.headlineSmall?.copyWith(
-                  fontWeight: FontWeight.bold,
-                ),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 6),
-              Text(
-                'NIM: ${_profile.nim}',
-                style: textTheme.bodyMedium?.copyWith(
-                  color: colorScheme.onSurfaceVariant,
-                ),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 4),
-              Text(
-                '${_profile.prodi} • Kelas ${_profile.kelas}',
-                style: textTheme.bodyMedium?.copyWith(
-                  fontWeight: FontWeight.w500,
-                ),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 12),
-              Text(
-                _profile.bio,
-                style: textTheme.bodyMedium?.copyWith(
-                  color: colorScheme.onSurfaceVariant,
-                ),
-                textAlign: TextAlign.center,
-              ),
+              ProfileHeader(profile: _profile),
               const SizedBox(height: 24),
               const Align(
                 alignment: Alignment.centerLeft,
@@ -88,32 +52,20 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
               ),
               const Divider(),
-              Card(
-                elevation: 2,
-                margin: const EdgeInsets.symmetric(vertical: 6),
-                child: ListTile(
-                  leading: Icon(Icons.email_outlined, color: colorScheme.primary),
-                  title: const Text('Email'),
-                  subtitle: Text(_profile.email),
-                ),
+              InfoTile(
+                icon: Icons.email_outlined,
+                label: 'Email',
+                value: _profile.email,
               ),
-              Card(
-                elevation: 2,
-                margin: const EdgeInsets.symmetric(vertical: 6),
-                child: ListTile(
-                  leading: Icon(Icons.phone_outlined, color: colorScheme.primary),
-                  title: const Text('Nomor HP'),
-                  subtitle: Text(_profile.hp),
-                ),
+              InfoTile(
+                icon: Icons.phone_outlined,
+                label: 'Nomor HP',
+                value: _profile.hp,
               ),
-              Card(
-                elevation: 2,
-                margin: const EdgeInsets.symmetric(vertical: 6),
-                child: ListTile(
-                  leading: Icon(Icons.code, color: colorScheme.primary),
-                  title: const Text('GitHub'),
-                  subtitle: Text(_profile.github),
-                ),
+              InfoTile(
+                icon: Icons.code,
+                label: 'GitHub',
+                value: _profile.github,
               ),
             ],
           ),
