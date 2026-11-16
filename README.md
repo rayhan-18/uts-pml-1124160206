@@ -1,16 +1,38 @@
-# uts_mobile
-A new Flutter project.
+```markdown
+# UTS PML - Aplikasi Profil Mahasiswa
 
-## Getting Started
+**Nama:** Muhamad Rayhan
+**NIM:** 1124160206
+**Kelas:** TI 24 P SE3
+**Mata Kuliah:** Pemrograman Mobile (KB1185)
 
-This project is a starting point for a Flutter application.
+## Video Presentasi
 
-A few resources to get you started if this is your first Flutter project:
+[UTS PML – Aplikasi Profil – Muhamad Rayhan – 1124160206](https://youtu.be/9thKJgpgxXw)
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+## Screenshot
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![Login](soal2-profil-app/assets/images/Loginn.jpg)
+
+![Profil](soal2-profil-app/assets/images/profile.jpg)
+
+![Edit Profil](soal2-profil-app/assets/images/profilepage.jpg)
+
+![Sidebar](soal2-profil-app/assets/images/sidebar.jpg)
+
+## Fitur
+
+- Halaman Login (Form + validator, loading, pushReplacement)
+- Halaman Profil (foto dari assets, bio, kontak)
+- Halaman Edit Profil (validasi, data kembali via Navigator.pop)
+- Halaman Tentang Saya (ListView)
+- Mode gelap (switch di drawer dan AppBar)
+- Drawer dan FloatingActionButton
+
+## Cara Menjalankan
+
+```bash
+flutter pub get
+flutter run
+```
+```
