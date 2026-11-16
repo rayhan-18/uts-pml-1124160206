@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import '../models/profile.dart';
 import '../widgets/info_tile.dart';
 import '../widgets/profile_header.dart';
-import '../screens/edit_profile_page.dart';
+import 'about_page.dart';
+import 'edit_profile_page.dart';
 
 class ProfilePage extends StatefulWidget {
   final bool isDarkMode;
@@ -41,6 +42,19 @@ class _ProfilePageState extends State<ProfilePage> {
     }
   }
 
+  void _bukaTentangSaya() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => AboutPage(profile: _profile),
+      ),
+    );
+  }
+
+  void _logout() {
+    Navigator.pushReplacementNamed(context, '/');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,6 +70,53 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
           ),
         ],
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            UserAccountsDrawerHeader(
+              accountName: Text(_profile.nama),
+              accountEmail: Text(_profile.email),
+              currentAccountPicture: CircleAvatar(
+                backgroundImage: AssetImage(_profile.fotoAsset),
+              ),
+            ),
+            ListTile(
+              leading: const Icon(Icons.person_outline),
+              title: const Text('Profil Mahasiswa'),
+              onTap: () => Navigator.pop(context),
+            ),
+            ListTile(
+              leading: const Icon(Icons.edit_outlined),
+              title: const Text('Edit Profil'),
+              onTap: () {
+                Navigator.pop(context);
+                _bukaEditProfil();
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.info_outline),
+              title: const Text('Tentang Saya'),
+              onTap: () {
+                Navigator.pop(context);
+                _bukaTentangSaya();
+              },
+            ),
+            const Divider(),
+            ListTile(
+              leading: const Icon(Icons.logout, color: Colors.red),
+              title: const Text(
+                'Keluar',
+                style: TextStyle(color: Colors.red),
+              ),
+              onTap: () {
+                Navigator.pop(context);
+                _logout();
+              },
+            ),
+          ],
+        ),
       ),
       body: SafeArea(
         child: SingleChildScrollView(
